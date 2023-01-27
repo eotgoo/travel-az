@@ -20,7 +20,7 @@ const LoginMain = () => {
     p: 4,
   };
   return (
-    <div>
+    <>
       <Button onClick={handleOpen} sx={{ color: "#000" }}>
         Sign In
       </Button>
@@ -36,7 +36,7 @@ const LoginMain = () => {
           </Typography>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 };
 

@@ -6,20 +6,18 @@ import { Box } from "@mui/system";
 const HomePage = () => {
   return (
     <>
+      <ResponsiveAppBar />
       <Box
         sx={{
           backgroundImage: `url("/images/header.jpg")`,
           backgroundRepeat: "repeat",
-          position: "relative",
+          position: "absolute",
+          width: "100%",
           backgroundSize: "cover",
           height: "100vh",
         }}
       >
-        {" "}
-        <ResponsiveAppBar />
-        <Grid sx={{ margoi }}>
-          <Hero />
-        </Grid>
+        <Hero />
       </Box>
     </>
   );
