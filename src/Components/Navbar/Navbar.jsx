@@ -12,8 +12,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import PersonIcon from "@mui/icons-material/Person";
+import { NavLink } from "react-router-dom";
+import LoginMain from "../../Pages/Auth/Main";
+const pages = [
+  { name: "Home", href: "/" },
+  { name: "Stays", href: "/stays" },
+  { name: "Flights", href: "/flights" },
+  { name: "Packages", href: "/packages" },
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,11 +42,14 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: "transparent", position: "absolute" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <TravelExploreIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            sx={{ display: { xs: "none", md: "flex", color: "#000" }, mr: 1 }}
           />
           <Typography
             variant="h6"
@@ -52,7 +62,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#000",
               textDecoration: "none",
             }}
           >
@@ -66,7 +76,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="#000"
             >
               <MenuIcon />
             </IconButton>
@@ -88,15 +98,20 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map((page, i) => (
+                <MenuItem key={i} onClick={handleCloseNavMenu}>
+                  <NavLink
+                    to={`${page.href}`}
+                    style={{ textDecoration: "none", color: "#000" }}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           <TravelExploreIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            sx={{ display: { xs: "flex", md: "none", color: "#000" }, mr: 1 }}
           />
           <Typography
             variant="h5"
@@ -110,20 +125,22 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#000",
               textDecoration: "none",
             }}
           >
-            LOGO
+            Trxvl.
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map((page, i) => (
               <Button
-                key={page}
+                key={i}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 1, color: "#fff", display: "block" }}
               >
-                {page}
+                <NavLink to={`${page.href}`} style={{ textDecoration: "none" }}>
+                  <Typography color="#000">{page.name}</Typography>
+                </NavLink>
               </Button>
             ))}
           </Box>
@@ -131,7 +148,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <PersonIcon sx={{ color: "#000" }} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -150,11 +167,11 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography>
+                  <LoginMain />
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
