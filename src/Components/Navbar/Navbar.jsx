@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import PersonIcon from "@mui/icons-material/Person";
 import { NavLink } from "react-router-dom";
+import "@fontsource/roboto/500.css";
 import LoginMain from "../../Pages/Auth/Main";
 const pages = [
   { name: "Home", href: "/" },
@@ -43,13 +44,14 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
-      position="static"
-      sx={{ backgroundColor: "transparent", position: "absolute" }}
+      sx={{
+        backgroundColor: "transparent",
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <TravelExploreIcon
-            sx={{ display: { xs: "none", md: "flex", color: "#000" }, mr: 1 }}
+            sx={{ display: { xs: "none", md: "flex", color: "#fff" }, mr: 1 }}
           />
           <Typography
             variant="h6"
@@ -62,7 +64,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "#000",
+              color: "#fff",
               textDecoration: "none",
             }}
           >
@@ -111,7 +113,8 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           <TravelExploreIcon
-            sx={{ display: { xs: "flex", md: "none", color: "#000" }, mr: 1 }}
+            variant="h5"
+            sx={{ display: { xs: "flex", md: "none", color: "#fff" }, mr: 1 }}
           />
           <Typography
             variant="h5"
@@ -125,7 +128,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "#000",
+              color: "#fff",
               textDecoration: "none",
             }}
           >
@@ -139,7 +142,7 @@ function ResponsiveAppBar() {
                 sx={{ my: 1, color: "#fff", display: "block" }}
               >
                 <NavLink to={`${page.href}`} style={{ textDecoration: "none" }}>
-                  <Typography color="#000">{page.name}</Typography>
+                  <Typography color="#fff">{page.name}</Typography>
                 </NavLink>
               </Button>
             ))}
@@ -148,7 +151,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <PersonIcon sx={{ color: "#000" }} />
+                <PersonIcon sx={{ color: "#fff" }} />
               </IconButton>
             </Tooltip>
             <Menu
