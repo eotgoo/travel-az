@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import "@fontsource/roboto/700.css";
 import ResponsiveAppBar from "../Navbar/Navbar";
 import Search from "./Search";
+import Category from "./Category";
 
 const Hero = () => {
   return (
@@ -13,12 +14,15 @@ const Hero = () => {
         <Box>
           <Typography
             variant="h1"
-            sx={{ marginTop: "10%", color: "#fff", width: "750px" }}
+            sx={{ marginTop: "20%", color: "#fff", width: "750px" }}
           >
             The whole world awaits.
           </Typography>
           <Box>
             <Search />
+          </Box>
+          <Box>
+            <Category />
           </Box>
         </Box>
       </Container>
