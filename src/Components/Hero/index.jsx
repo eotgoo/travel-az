@@ -10,11 +10,12 @@ import Category from "./Category";
 const Hero = () => {
   return (
     <Box>
+      <ResponsiveAppBar />
       <Container>
         <Box>
           <Typography
             variant="h1"
-            sx={{ marginTop: "20%", color: "#fff", width: "750px" }}
+            sx={{ marginTop: "15%", color: "#fff", width: "750px" }}
           >
             The whole world awaits.
           </Typography>

@@ -3,24 +3,26 @@ import Hero from "../../Components/Hero";
 import ResponsiveAppBar from "../../Components/Navbar/Navbar";
 import { Box } from "@mui/system";
 import Discount from "../../Components/Content/Discount";
+import AppDownlaod from "../../Components/Footer/AppDownlaod";
+import Footer from "../../Components/Footer/Footer";
 
 const HomePage = () => {
   return (
     <Box>
-      <ResponsiveAppBar />
       <Box
         sx={{
           backgroundImage: `url("/images/hdr.jpg")`,
           backgroundRepeat: "repeat",
-          position: "absolute",
-          width: "100%",
           backgroundSize: "cover",
           height: "100vh",
+          width: "100%",
         }}
       >
         <Hero />
       </Box>
       <Discount />
+      <AppDownlaod />
+      <Footer />
     </Box>
   );
 };

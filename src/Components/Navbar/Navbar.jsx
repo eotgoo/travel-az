@@ -46,6 +46,7 @@ function ResponsiveAppBar() {
     <AppBar
       sx={{
         backgroundColor: "transparent",
+        position: "relative",
       }}
     >
       <Container maxWidth="xl">
@@ -171,9 +172,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography>
-                  <LoginMain />
-                </Typography>
+                <LoginMain />
               </MenuItem>
             </Menu>
           </Box>

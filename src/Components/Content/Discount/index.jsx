@@ -10,14 +10,24 @@ const Discount = () => {
   return (
     <Box
       sx={{
-        marginTop: -30,
+        marginTop: -45,
       }}
     >
       <Container>
         <Typography variant="h4" sx={{ color: "white", marginTop: "15%" }}>
           Top Vacation Destinations
         </Typography>
-        <Box sx={{ display: "flex", marginTop: "30px", gap: "30px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            marginTop: "5%",
+            gap: "30px",
+            overflowX: "scroll",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+          }}
+        >
           {discountItems.map((x, i) => {
             return (
               <Box key={i}>
@@ -26,7 +36,8 @@ const Discount = () => {
                     src={x.img}
                     alt=""
                     style={{
-                      width: "310px",
+                      height: "250px",
+                      borderRadius: "20px",
                     }}
                   />
                 </Box>
