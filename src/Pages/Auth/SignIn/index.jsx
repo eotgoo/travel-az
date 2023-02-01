@@ -16,15 +16,15 @@ export default function SignIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const login = () => {
     console.log("login");
     if (email === "" || password === "") {
       setOpen(true);
     } else {
       console.log(email, password);
-      navigate("/category");
-      localStorage.setItem("isLogged", true);
+      // navigate("/category");
+      // localStorage.setItem("isLogged", true);
     }
   };
 
