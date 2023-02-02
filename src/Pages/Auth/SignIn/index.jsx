@@ -11,33 +11,27 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Alert, Snackbar } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-export default function SignIn(props) {
+
+export default function SignIn({ setisSignIn, login }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [open, setOpen] = useState(false);
-  // const navigate = useNavigate();
-  const login = () => {
-    console.log("login");
-    if (email === "" || password === "") {
-      setOpen(true);
-    } else {
-      console.log(email, password);
-      // navigate("/category");
-      // localStorage.setItem("isLogged", true);
-    }
-  };
+  const [message, setMessage] = useState("");
+  const [isAlert, setAlert] = useState(false);
 
-  const onClose = () => {
-    setOpen(false);
-  };
   const changeEmail = (e) => {
-    console.log("email", e.target.value);
     setEmail(e.target.value);
   };
   const changePassword = (e) => {
-    console.log("password", e.target.value);
     setPassword(e.target.value);
+  };
+
+  const clickLogin = () => {
+    if (email === "" || password === "") {
+      setMessage("Нэвтрэх нэр эсвэл нууц үг хоосон байна!");
+      setAlert(true);
+      return;
+    }
+    login(email, password);
   };
   return (
     <Box>
@@ -88,7 +82,7 @@ export default function SignIn(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={login}
+              onClick={clickLogin}
             >
               Sign In
             </Button>
@@ -102,7 +96,7 @@ export default function SignIn(props) {
                 <Button
                   variant="text"
                   onClick={() => {
-                    props.setisSignIn(false);
+                    setisSignIn(false);
                   }}
                 >
                   Sign Up
@@ -112,14 +106,14 @@ export default function SignIn(props) {
           </Box>
         </Box>
         <Snackbar
-          open={open}
-          autoHideDuration={3000}
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          onClose={onClose}
+          open={isAlert}
+          onClose={() => {
+            setAlert(false);
+          }}
+          autoHideDuration={3000}
         >
-          <Alert severity="error" sx={{ width: "100%" }}>
-            хэрэглэгчийн нэр эсвэл нууц үг хоосон байна
-          </Alert>
+          <Alert severity="error">{message}</Alert>
         </Snackbar>
       </Container>
     </Box>

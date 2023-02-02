@@ -1,6 +1,5 @@
 import React from "react";
 import Hero from "../../Components/Hero";
-import ResponsiveAppBar from "../../Components/Navbar/Navbar";
 import { Box } from "@mui/system";
 import Discount from "../../Components/Content/Discount";
 import AppDownlaod from "../../Components/Footer/AppDownlaod";

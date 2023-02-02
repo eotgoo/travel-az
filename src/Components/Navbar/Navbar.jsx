@@ -7,46 +7,46 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
-import PersonIcon from "@mui/icons-material/Person";
 import { NavLink } from "react-router-dom";
+import Modal from "@mui/material/Modal";
 import "@fontsource/roboto/500.css";
-import LoginMain from "../../Pages/Auth/Main";
+import AuthPage from "../../Pages/Auth";
 const pages = [
   { name: "Home", href: "/" },
   { name: "Stays", href: "/stays" },
   { name: "Flights", href: "/flights" },
   { name: "Packages", href: "/packages" },
 ];
-
-function ResponsiveAppBar() {
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+function ResponsiveAppBar({ login, handleClose, openModal }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
     <AppBar
       sx={{
-        backgroundColor: "transparent",
-        position: "relative",
+        background: "transparent",
+        position: "absolute",
       }}
     >
       <Container maxWidth="xl">
@@ -148,33 +148,12 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <PersonIcon sx={{ color: "#fff" }} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <LoginMain />
-              </MenuItem>
-            </Menu>
+          <Box>
+            <Box>
+              <Modal open={openModal} onClose={handleClose} sx={style}>
+                <AuthPage handleClose={handleClose} login={login} />
+              </Modal>
+            </Box>
           </Box>
         </Toolbar>
       </Container>
