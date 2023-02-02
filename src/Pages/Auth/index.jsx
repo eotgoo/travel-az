@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const AuthPage = () => {
+const AuthPage = ({ login }) => {
   const [isSignIn, setisSignIn] = useState(true);
   return (
     <>
       {isSignIn ? (
-        <SignIn setisSignIn={setisSignIn} />
+        <SignIn setisSignIn={setisSignIn} login={login} />
       ) : (
         <SignUp setisSignIn={setisSignIn} />
       )}

@@ -31,7 +31,16 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-function ResponsiveAppBar({ login, handleClose, openModal }) {
+function ResponsiveAppBar({
+  window,
+  logout,
+  login,
+  user,
+  setUser,
+  openModal,
+  handleClose,
+  handleOpen,
+}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -150,6 +159,39 @@ function ResponsiveAppBar({ login, handleClose, openModal }) {
           </Box>
           <Box>
             <Box>
+              {user ? (
+                <Button
+                  onClick={() => {
+                    logout();
+                  }}
+                  sx={{
+                    padding: "0",
+                    fontWeight: "700",
+                    fontSize: "16px",
+                    color: "#fff",
+                    textTransform: "none",
+                    marginLeft: "2vw",
+                    opacity: "0.8",
+                  }}
+                >
+                  Sign Out
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleOpen}
+                  sx={{
+                    padding: "0",
+                    fontWeight: "700",
+                    fontSize: "16px",
+                    color: "#fff",
+                    textTransform: "none",
+                    marginLeft: "2vw",
+                    opacity: "0.8",
+                  }}
+                >
+                  Sign In
+                </Button>
+              )}
               <Modal open={openModal} onClose={handleClose} sx={style}>
                 <AuthPage handleClose={handleClose} login={login} />
               </Modal>
