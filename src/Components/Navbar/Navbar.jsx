@@ -19,24 +19,13 @@ const pages = [
   { name: "Stays", href: "/stays" },
   { name: "Flights", href: "/flights" },
   { name: "Packages", href: "/packages" },
+  { name: "Add Category", href: "/addCategory" },
 ];
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+
 function ResponsiveAppBar({
-  window,
   logout,
   login,
   user,
-  setUser,
   openModal,
   handleClose,
   handleOpen,
@@ -192,7 +181,7 @@ function ResponsiveAppBar({
                   Sign In
                 </Button>
               )}
-              <Modal open={openModal} onClose={handleClose} sx={style}>
+              <Modal open={openModal} onClose={handleClose}>
                 <AuthPage handleClose={handleClose} login={login} />
               </Modal>
             </Box>

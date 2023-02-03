@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import ResponsiveAppBar from "./Components/Navbar/Navbar";
 import HomePage from "./Pages/Home/HomePage";
+import AddCategory from "./Pages/Admin/Components/addCategory";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -41,6 +42,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/addCategory" element={<AddCategory />} />
       </Routes>
     </>
   );

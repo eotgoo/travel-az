@@ -42,6 +42,9 @@ export default function SignIn({ setisSignIn, login }) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            bgcolor: "#fff",
+            p: "20px",
+            borderRadius: "20px",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
