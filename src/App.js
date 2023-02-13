@@ -4,6 +4,7 @@ import axios from "axios";
 import ResponsiveAppBar from "./Components/Navbar/Navbar";
 import HomePage from "./Pages/Home/HomePage";
 import AddCategory from "./Pages/Admin/Components/addCategory";
+import { UserContext } from "./Context";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -31,7 +32,7 @@ function App() {
     setUser(null);
   };
   return (
-    <>
+    <UserContext.Provider>
       <ResponsiveAppBar
         logout={logout}
         login={login}
@@ -44,7 +45,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/addCategory" element={<AddCategory />} />
       </Routes>
-    </>
+    </UserContext.Provider>
   );
 }
 
