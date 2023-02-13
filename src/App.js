@@ -32,14 +32,16 @@ function App() {
     setUser(null);
   };
   return (
-    <UserContext.Provider>
+    <UserContext.Provider
+      value={{ logout, login, user, openModal, handleOpen, handleClose }}
+    >
       <ResponsiveAppBar
-        logout={logout}
-        login={login}
-        user={user}
-        openModal={openModal}
-        handleOpen={handleOpen}
-        handleClose={handleClose}
+      // logout={logout}
+      // login={login}
+      // user={user}
+      // openModal={openModal}
+      // handleOpen={handleOpen}
+      // handleClose={handleClose}
       />
       <Routes>
         <Route path="/" element={<HomePage />} />

@@ -23,9 +23,9 @@ const Category = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/category");
-      // console.log("response: ", res.data.category);
-      setCategoryItems(res.data.category);
+      const res = await axios.get("http://localhost:8000/categories");
+      // console.log("response: ", res.data.data.categories);
+      setCategoryItems(res.data.data.categories);
     } catch (err) {
       console.log(err);
     }

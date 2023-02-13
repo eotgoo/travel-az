@@ -14,6 +14,8 @@ import { NavLink } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import "@fontsource/roboto/500.css";
 import AuthPage from "../../Pages/Auth";
+import { UserContext } from "../../Context";
+import { useContext } from "react";
 const pages = [
   { name: "Home", href: "/" },
   { name: "Stays", href: "/stays" },
@@ -22,16 +24,10 @@ const pages = [
   { name: "Add Category", href: "/addCategory" },
 ];
 
-function ResponsiveAppBar({
-  logout,
-  login,
-  user,
-  openModal,
-  handleClose,
-  handleOpen,
-}) {
+function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+  const { logout, openModal, handleClose, handleOpen, login, user } =
+    useContext(UserContext);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
