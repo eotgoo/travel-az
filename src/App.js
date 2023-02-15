@@ -9,6 +9,7 @@ import { UserContext } from "./Context";
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [user, setUser] = useState(localStorage.getItem("user"));
+  const [alert, setAlert] = useState("");
 
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
@@ -20,6 +21,8 @@ function App() {
         password,
       });
       localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("message", JSON.stringify(res.data.message));
+      setAlert(res.data.message);
       setUser(res.data.user);
       handleClose();
     } catch (error) {

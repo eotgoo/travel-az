@@ -9,6 +9,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
+import Avatar from "@mui/material/Avatar";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import { NavLink } from "react-router-dom";
 import Modal from "@mui/material/Modal";
@@ -26,6 +28,7 @@ const pages = [
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { logout, openModal, handleClose, handleOpen, login, user } =
     useContext(UserContext);
   const handleOpenNavMenu = (event) => {
@@ -35,7 +38,12 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
   return (
     <AppBar
       sx={{
@@ -145,22 +153,43 @@ function ResponsiveAppBar() {
           <Box>
             <Box>
               {user ? (
-                <Button
-                  onClick={() => {
-                    logout();
-                  }}
-                  sx={{
-                    padding: "0",
-                    fontWeight: "700",
-                    fontSize: "16px",
-                    color: "#fff",
-                    textTransform: "none",
-                    marginLeft: "2vw",
-                    opacity: "0.8",
-                  }}
-                >
-                  Sign Out
-                </Button>
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip>
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "45px" }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={() => {
+                          logout();
+                        }}
+                      >
+                        Sign out
+                      </Typography>
+                    </MenuItem>
+                  </Menu>
+                </Box>
               ) : (
                 <Button
                   onClick={handleOpen}
