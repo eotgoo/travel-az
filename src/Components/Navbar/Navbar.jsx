@@ -206,8 +206,11 @@ function ResponsiveAppBar() {
                   Sign In
                 </Button>
               )}
+
               <Modal open={openModal} onClose={handleClose}>
-                <AuthPage handleClose={handleClose} login={login} />
+                <Box>
+                  <AuthPage handleClose={handleClose} login={login} />
+                </Box>
               </Modal>
             </Box>
           </Box>

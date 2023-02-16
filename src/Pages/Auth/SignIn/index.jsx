@@ -27,7 +27,6 @@ export default function SignIn({ setisSignIn, login }) {
 
   const clickLogin = () => {
     if (email === "" || password === "") {
-      setMessage("Нэвтрэх нэр эсвэл нууц үг хоосон байна!");
       setAlert(true);
       return;
     }
